@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    list-style: none;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 0;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+body {
+    background: linear-gradient(25deg, #0077b6, #caf0f8);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* header */
+header {
+    flex: 1;
+    margin-top: 35px;
+}
+header h1 {
+    font-size: 45px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* form */
+form {
+    flex: 1;
+    position: relative;
+}
+form .todoInput {
+    appearance: none;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 400px;
+    padding-right: 41px;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.6)
+    );
+}
+form .todoSubmitButton {
+    position: absolute;
+    height: 42px;
+    width: 42px;
+    appearance: none;
+    border: none;
+    left: 89%;
+    color: rgba(0, 0, 0, 0.6);
+    background: transparent;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+form .todoSubmitButton i {
+    transition: all 0.3s ease;
+}
+form .todoSubmitButton:hover i,
+form .todoSubmitButton:focus i {
+    transform: scale(1.2);
+}
+form .todoSubmitButton:active i {
+    transform: scale(1);
+}
+
+/* todolists */
+.todoListsContainer {
+    flex: 3;
+    width: 100%;
+}
+.todoLists {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 350px;
+    padding: 0 5px 0 10px;
+    overflow-y: auto;
+}
+.todoList {
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.6)
+    );
+    width: 400px;
+    /* padding: 10px; */
+    margin-top: 5px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.todoList:hover {
+    transform: scale(1.02);
+}
+
+.todo {
+    flex: 1;
+    padding: 10px 0 10px 10px;
+}
+.todo li {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+}
+.completeButton,
+.deleteButton {
+    height: 42px;
+    width: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+.completeButton i,
+.deleteButton i {
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.completeButton:hover i,
+.completeButton:focus i {
+    color: rgba(18, 240, 18, 0.7);
+    transform: scale(1.2);
+}
+.deleteButton:hover i,
+.deleteButton:focus i {
+    color: rgba(255, 0, 0, 0.7);
+    transform: scale(1.2);
+}
+.completeButton:active i {
+    transition: all 0.2s ease;
+    transform: scale(1);
+}
+.deleteButton:active i {
+    transition: all 0.2s ease;
+    transform: scale(1);
+}
+.completeButton {
+    font-size: 18px;
+}
+.deleteButton {
+    font-size: 16px;
+}
+
+.deleteTodoList {
+    animation: delete 0.8s ease;
+}
+@keyframes delete {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+.completeTodoList {
+    opacity: 0.5;
+}
+.completeTodo {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+}
+
+@media only screen and (max-width: 500px) {
+    form .todoInput {
+        width: 350px;
+    }
+    form .todoSubmitButton {
+        left: 88%;
+    }
+
+    .todoList {
+        width: 350px;
+    }
+}

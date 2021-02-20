@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- favicons -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="180x180"
+            href="./favicon/favicon.ico"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./favicon/favicon-16x16.png"
+        />
+        <link rel="shortcut icon" href="./favicon/favicon.ico" />
+
+        <title>Todo Lists</title>
+
+        <!-- font, icons, css -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,500&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+            integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+
+    <body>
+        <header>
+            <h1>
+                <i class="fas fa-list-ul"></i>
+                Todo Lists
+            </h1>
+        </header>
+
+        <form>
+            <input type=" text" class="todoInput" />
+            <button class="todoSubmitButton">
+                <i class="fas fa-plus"></i>
+            </button>
+        </form>
+
+        <div class="todoListsContainer">
+            <ul class="todoLists"></ul>
+        </div>
+
+        <!-- script -->
+        <script src="./app.js"></script>
+    </body>
+</html>
