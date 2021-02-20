@@ -59,7 +59,7 @@ function completeOrDelete(event) {
     }
 }
 
-// change completed to true
+// change completed to true or false in localStorage
 function completedState(todoList) {
     let todoLists;
 
@@ -69,10 +69,8 @@ function completedState(todoList) {
         todoLists = JSON.parse(localStorage.getItem("todoLists"));
     }
 
-    const todoListText = todoList.children[0].innerText;
-    const todoListIndex = todoLists.findIndex(
-        (x) => x.todoListText === todoListText
-    );
+    const todoListId = todoList.getAttribute("id");
+    const todoListIndex = todoLists.findIndex((x) => x.id === todoListId);
 
     if (todoLists[todoListIndex].completed === false) {
         todoLists[todoListIndex].completed = true;
