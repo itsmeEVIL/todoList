@@ -19,7 +19,7 @@ function addTodoList(event) {
     let idNumbers = (Math.random() * 1000000).toString();
 
     const todoList = `
-    <div class="todoList addTodoList" id="${idNumbers}">
+    <div class="todoList todoListFadeInRight" id="${idNumbers}">
         <div class="todo">
             <li>${todoInput.value}</li>
         </div>
@@ -39,7 +39,7 @@ function addTodoList(event) {
     const todo = todoLists.children[0];
 
     todo.addEventListener("animationend", () => {
-        todo.classList.remove("addTodoList");
+        todo.classList.remove("todoListFadeInRight");
     });
 
     todoListFilter();
@@ -73,28 +73,55 @@ function todoListFilter() {
 // when completeButton or deleteButton is clicked
 function completeOrDelete(event) {
     const buttons = event.target;
+    const radio = todoFilters.children;
 
     if (buttons.classList[0] === "completeButton") {
         const todoList = buttons.parentElement;
         const todo = todoList.children[0].children[0];
 
-        todoList.classList.toggle("completeTodoList");
         todo.classList.toggle("completeTodo");
         completedState(todoList);
+
+        if (radio[0].children[0].checked) {
+            todoList.classList.toggle("completeTodoList");
+
+            todoListFilter();
+        }
+        if (radio[1].children[0].checked) {
+            todoList.classList.add("completeTodoList");
+            todoList.classList.add("todoListFadeOutRight");
+
+            todoList.addEventListener("animationend", () => {
+                todoList.classList.remove("completeTodoList");
+                todoList.classList.remove("todoListFadeOutRight");
+
+                todoListFilter();
+            });
+        }
+        if (radio[2].children[0].checked) {
+            todoList.classList.add("todoListFadeOutLeft");
+
+            todoList.addEventListener("animationend", () => {
+                todoList.classList.remove("todoListFadeOutLeft");
+                todoList.classList.toggle("completeTodoList");
+
+                todoListFilter();
+            });
+        }
     }
 
     if (buttons.classList[0] === "deleteButton") {
         const todoList = buttons.parentElement;
 
-        todoList.classList.add("deleteTodoList");
+        todoList.classList.add("todoListFadeOutRight");
 
         todoList.addEventListener("animationend", () => {
             removeTodoListFromLocal(todoList);
             todoList.remove();
+
+            todoListFilter();
         });
     }
-
-    todoListFilter();
 }
 
 // change completed to true or false in localStorage

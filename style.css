@@ -102,6 +102,7 @@ form .todosFilter {
 form .todosFilter label {
     display: flex;
     align-items: center;
+    user-select: none;
 }
 form .todoFilter {
     appearance: none;
@@ -210,27 +211,16 @@ form .todoFilter:checked {
     font-size: 16px;
 }
 
-.addTodoList {
-    animation: add 0.8s ease;
+/* animations */
+.todoListFadeInRight {
+    animation: fadeInRight 0.8s ease;
 }
-@keyframes add {
+@keyframes fadeInRight {
     from {
         transform: translateX(-120%);
     }
     to {
         transform: translateX(0);
-    }
-}
-.deleteTodoList {
-    animation: delete 0.8s ease;
-}
-@keyframes delete {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(120%);
-        opacity: 0;
     }
 }
 .completeTodoList {
@@ -239,6 +229,32 @@ form .todoFilter:checked {
 .completeTodo {
     text-decoration: line-through;
     text-decoration-thickness: 2px;
+}
+.todoListFadeOutLeft {
+    animation: fadeOutLeft 0.8s ease;
+}
+@keyframes fadeOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+}
+.todoListFadeOutRight {
+    animation: fadeOutRight 0.8s ease;
+}
+@keyframes fadeOutRight {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
 }
 
 @media only screen and (max-width: 500px) {
