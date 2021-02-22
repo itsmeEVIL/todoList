@@ -2,11 +2,14 @@
 const todoInput = document.querySelector(".todoInput");
 const todoSubmitButton = document.querySelector(".todoSubmitButton");
 
+const todoFilters = document.querySelector(".todosFilter");
+
 const todoLists = document.querySelector(".todoLists");
 
 // eventListener
 document.addEventListener("DOMContentLoaded", pullTodoListFromLocal);
 todoSubmitButton.addEventListener("click", addTodoList);
+todoFilters.addEventListener("click", todoListFilter);
 todoLists.addEventListener("click", completeOrDelete);
 
 // add todoList to todoLists
@@ -16,7 +19,7 @@ function addTodoList(event) {
     let idNumbers = (Math.random() * 1000000).toString();
 
     const todoList = `
-    <div class="todoList" id="${idNumbers}">
+    <div class="todoList addTodoList" id="${idNumbers}">
         <div class="todo">
             <li>${todoInput.value}</li>
         </div>
@@ -32,6 +35,39 @@ function addTodoList(event) {
     saveTodoListToLocal(todoInput.value, idNumbers);
     todoLists.insertAdjacentHTML("afterbegin", todoList);
     todoInput.value = "";
+
+    const todo = todoLists.children[0];
+
+    todo.addEventListener("animationend", () => {
+        todo.classList.remove("addTodoList");
+    });
+
+    todoListFilter();
+}
+
+// filter todoList & check which option is selected
+function todoListFilter() {
+    const radio = todoFilters.children;
+
+    Array.from(todoLists.children).forEach((todo) => {
+        if (radio[0].children[0].checked) {
+            todo.style.display = "flex";
+        }
+        if (radio[1].children[0].checked) {
+            if (todo.classList.contains("completeTodoList")) {
+                todo.style.display = "flex";
+            } else {
+                todo.style.display = "none";
+            }
+        }
+        if (radio[2].children[0].checked) {
+            if (!todo.classList.contains("completeTodoList")) {
+                todo.style.display = "flex";
+            } else {
+                todo.style.display = "none";
+            }
+        }
+    });
 }
 
 // when completeButton or deleteButton is clicked
@@ -57,6 +93,8 @@ function completeOrDelete(event) {
             todoList.remove();
         });
     }
+
+    todoListFilter();
 }
 
 // change completed to true or false in localStorage
@@ -72,7 +110,7 @@ function completedState(todoList) {
     const todoListId = todoList.getAttribute("id");
     const todoListIndex = todoLists.findIndex((x) => x.id === todoListId);
 
-    if (todoLists[todoListIndex].completed === false) {
+    if (!todoLists[todoListIndex].completed) {
         todoLists[todoListIndex].completed = true;
     } else {
         todoLists[todoListIndex].completed = false;

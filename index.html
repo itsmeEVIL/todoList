@@ -51,10 +51,31 @@
         </header>
 
         <form>
-            <input type=" text" class="todoInput" />
-            <button class="todoSubmitButton">
-                <i class="fas fa-plus"></i>
-            </button>
+            <div>
+                <input type="text" class="todoInput" />
+                <button class="todoSubmitButton">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="todosFilter">
+                <label>
+                    <input
+                        name="todoFilter"
+                        type="radio"
+                        class="todoFilter"
+                        checked
+                    />
+                    All
+                </label>
+                <label>
+                    <input name="todoFilter" type="radio" class="todoFilter" />
+                    Completed
+                </label>
+                <label>
+                    <input name="todoFilter" type="radio" class="todoFilter" />
+                    Uncompleted
+                </label>
+            </div>
         </form>
 
         <div class="todoListsContainer">

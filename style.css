@@ -31,8 +31,7 @@ body {
 
 /* header */
 header {
-    flex: 1;
-    margin-top: 35px;
+    padding: 35px 0;
 }
 header h1 {
     font-size: 45px;
@@ -84,11 +83,52 @@ form .todoSubmitButton:focus i {
 form .todoSubmitButton:active i {
     transform: scale(1);
 }
+form .todosFilter {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30px;
+    width: 300px;
+    margin: 10px auto;
+    border-radius: 7px;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.6)
+    );
+    color: rgba(0, 0, 0, 0.8);
+}
+form .todosFilter label {
+    display: flex;
+    align-items: center;
+}
+form .todoFilter {
+    appearance: none;
+    height: 12px;
+    width: 12px;
+    margin-right: 5px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    outline: none;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+form .todoFilter:hover,
+form .todoFilter:focus {
+    background: #def4ff;
+}
+form .todoFilter:checked {
+    background: #7dc8f0;
+}
 
 /* todolists */
 .todoListsContainer {
     flex: 3;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 .todoLists {
     display: flex;
@@ -108,7 +148,6 @@ form .todoSubmitButton:active i {
         rgba(255, 255, 255, 0.6)
     );
     width: 400px;
-    /* padding: 10px; */
     margin-top: 5px;
     border-radius: 10px;
     display: flex;
@@ -171,6 +210,17 @@ form .todoSubmitButton:active i {
     font-size: 16px;
 }
 
+.addTodoList {
+    animation: add 0.8s ease;
+}
+@keyframes add {
+    from {
+        transform: translateX(-120%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
 .deleteTodoList {
     animation: delete 0.8s ease;
 }
