@@ -1,5 +1,5 @@
 <h1>todoList</h1>
-<p>a simple todolist using javascript</p>
+<p>a simple todolist using vanilla javascript</p>
 
 <p>
     <a href="https://github.com/itsmeEVIL/todoList/blob/master/LICENSE">
