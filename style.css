@@ -167,6 +167,7 @@ form .todoFilter:checked {
 .todo li {
     color: rgba(0, 0, 0, 0.8);
     font-size: 18px;
+    text-align: justify;
 }
 .completeButton,
 .deleteButton {
