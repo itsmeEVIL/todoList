@@ -23,10 +23,10 @@ function addTodoList(event) {
         <div class="todo">
             <li>${todoInput.value}</li>
         </div>
-        <button class="completeButton">
+        <button class="completeButton" title="Complete">
             <i class="fas fa-check"></i>
         </button>
-        <button class="deleteButton">
+        <button class="deleteButton" title="Delete">
             <i class="fas fa-trash"></i>
         </button>
     </div>
@@ -181,10 +181,10 @@ function pullTodoListFromLocal() {
                 <div class="todo">
                     <li class="completeTodo">${todo.todoListText}</li>
                 </div>
-                <button class="completeButton">
+                <button class="completeButton" title="Complete">
                     <i class="fas fa-check"></i>
                 </button>
-                <button class="deleteButton">
+                <button class="deleteButton" title="Delete">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
@@ -197,10 +197,10 @@ function pullTodoListFromLocal() {
                 <div class="todo">
                     <li>${todo.todoListText}</li>
                 </div>
-                <button class="completeButton">
+                <button class="completeButton" title="Complete">
                     <i class="fas fa-check"></i>
                 </button>
-                <button class="deleteButton">
+                <button class="deleteButton" title="Delete">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
